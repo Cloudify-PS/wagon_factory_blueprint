@@ -24,6 +24,9 @@ inputs:
   wagon_version:
     type: string
     default: "0.3.2"
+    
+  plugin_zip:
+    type: string
 
   agent_user:
     type: string
