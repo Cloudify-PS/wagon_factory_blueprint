@@ -1,0 +1,8 @@
+node_types:
+
+  labs.networking.sshtunnel:
+    derived_from: cloudify.nodes.ApplicationModule
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        create:
+          implementation: scripts/tunnel_create.sh
