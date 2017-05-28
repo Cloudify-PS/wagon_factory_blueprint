@@ -2,7 +2,7 @@
 
 ctx logger "Installing web server"
 
-sudo yum install -t httpd
+sudo yum install -y httpd
 
 ctx logger "Starting web server"
 sudo systemctl httpd start
