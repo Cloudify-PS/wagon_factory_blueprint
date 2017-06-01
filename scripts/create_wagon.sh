@@ -28,4 +28,6 @@ wagon create -s . -a '--no-cache-dir -c constrains.conf'
 
 sudo mv *.wgn /var/www/html
 
-sudo ls -1 /var/www/html > /var/www/html/index.html
+cd /var/www/html
+
+find . -name "*.wgn" -exec echo \<a href=\"{}\" \> {} \<\/a\> \<br\> \; > index.html

@@ -3,6 +3,8 @@
 REMOTEKEY=$(ctx download-resource "config/oib_cloudify.rsa")
 SERVICE_DEF=$(ctx download-resource "config/porttun.service")
 
+sudo setenforce 0
+
 sudo cp $REMOTEKEY /root/remote.rsa
 sudo chmod 600 /root/remote.rsa
 
