@@ -10,34 +10,8 @@ ctx logger "Installing  pip and virtualenv"
 
 sudo yum -y install python-pip python-virtualenv
 
+SCRIPT=`ctx download-resource scripts/create_wagon.sh '@{"target_path": "/tmp/create_wagon.sh"}'`
 
-mkdir /tmp/wagon/
+shmod 600 ${SCRIPT} ${wagon_version} ${cloudify_version} ${plugin_zip}
 
-cd /tmp/wagon
-
-virtualenv /tmp/wagon
-
-. /tmp/wagon/bin/activate
-
-pip install wagon==${wagon_version}
-
-pip install --upgrade pip==9.0.1
-
-mkdir build
-
-cd build
-
-
-wget ${plugin_zip}
-
-unzip `ls`
-
-cd `ls -d */`
-
-echo "cloudify-plugins-common==${cloudify_version}" > constrains.conf
-
-wagon create -s . -a '--no-cache-dir -c constrains.conf'
-
-sudo mv *.wgn /var/www/html
-
-sudo ls -1 /var/www/html > /var/www/html/index.html
+sudo su - -c "/bin/bash ${SCRIPT}"
