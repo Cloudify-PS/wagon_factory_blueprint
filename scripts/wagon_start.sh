@@ -12,6 +12,6 @@ sudo yum -y install python-pip python-virtualenv
 
 SCRIPT=`ctx download-resource scripts/create_wagon.sh '@{"target_path": "/tmp/create_wagon.sh"}'`
 
-shmod 600 ${SCRIPT} ${wagon_version} ${cloudify_version} ${plugin_zip}
+shmod 600 ${SCRIPT}
 
-sudo su - -c "/bin/bash ${SCRIPT}"
+sudo su - -c "/bin/bash ${SCRIPT} ${wagon_version} ${cloudify_version} ${plugin_zip}"
