@@ -17,9 +17,7 @@ cd /tmp/wagon
 
 virtualenv /tmp/wagon
 
-export PATH=/tmp/wagon/bin:$PATH
-
-ctx logger "Installing wagon version ${wagon_version} "
+. /tmp/wagon/bin/activate
 
 pip install wagon==${wagon_version}
 
@@ -29,7 +27,6 @@ mkdir build
 
 cd build
 
-ctx logger "Downloading Plugin"
 
 wget ${plugin_zip}
 
@@ -38,8 +35,6 @@ unzip `ls`
 cd `ls -d */`
 
 echo "cloudify-plugins-common==${cloudify_version}" > constrains.conf
-
-ctx logger "Creating Wagon File"
 
 wagon create -s . -a '--no-cache-dir -c constrains.conf'
 
