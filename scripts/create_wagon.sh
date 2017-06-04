@@ -24,10 +24,15 @@ cd `ls -d */`
 
 echo "cloudify-plugins-common==${2}" > constrains.conf
 
-wagon create -s . -a '--no-cache-dir -c constrains.conf'
+wagon create -s . -a '--no-cache-dir -c constrains.conf' > build.log
 
-sudo mv *.wgn /var/www/html
+mv  build.log `ls *.wgn`_build.log
+
+mv *.wgn /var/www/html
+
+mv *.log /var/www/html
+
 
 cd /var/www/html
 
-find . -name "*.wgn" -exec echo \<a href=\"{}\" \> {} \<\/a\> \<br\> \; > index.html
+find . -name "*.wgn*" -exec echo \<a href=\"{}\" \> {} \<\/a\> \<br\> \; > index.html
