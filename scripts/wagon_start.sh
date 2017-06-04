@@ -6,7 +6,7 @@ sudo yum -y install epel-release
 
 sudo yum -y install wget unzip
 
-sudo yum -y install gcc python-devel
+sudo yum -y install gcc python-devel libffi-devel openssl-devel
 
 ctx logger "Installing  pip and virtualenv"
 
